@@ -5,20 +5,20 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 public class IndexController {
     private Logger logger = LoggerFactory.getLogger(IndexController.class);
 
     @GetMapping("/")
-    public HashMap index() {
+    public Map<String, Object> index() {
         logger.debug("request served");
 
-        return new HashMap<>() {{
-            put("success", true);
-            put("hello", "world");
-            put("new-message", "adding a new msg");
-        }};
+        return Map.of(
+                "success", true,
+                "hello", "world",
+                "new-message", "adding a new msg"
+        );
     }
 }
